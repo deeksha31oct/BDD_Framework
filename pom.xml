@@ -6,19 +6,20 @@
 
     <groupId>org.BDD</groupId>
     <artifactId>ORANGE_FRAMEWORK</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <cucmber.version>7.15.0</cucmber.version>
         <selenium.version>4.24.0</selenium.version>
         <testng.version>7.10.2</testng.version>
-        <extend.version>5.1.1</extend.version>
+        <extent.version>5.1.1</extent.version>
+        <mssql-jdbc.version>12.6.1.jre11</mssql-jdbc.version>
     </properties>
+
     <dependencies>
-        <!-- Cucumber dependenices -->
+        <!-- Cucumber -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
@@ -29,37 +30,43 @@
             <artifactId>cucumber-testng</artifactId>
             <version>6.6.1</version>
         </dependency>
-        <!-- selenium dependenices -->
+
+        <!-- Selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.24.0</version>
+            <version>${selenium.version}</version>
         </dependency>
-        <!-- testng dependenices -->
+
+        <!-- Appium -->
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>9.2.3</version>
         </dependency>
-        <!-- testng dependenices -->
+
+        <!-- TestNG -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
         </dependency>
-        <!-- webdriver manager dependenices -->
+
+        <!-- WebDriverManager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>6.0.0</version>
         </dependency>
-        <!-- extent reports dependenices -->
+
+        <!-- Extent Reports -->
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
-            <version>2.0.1</version>
+            <version>${extent.version}</version>
         </dependency>
-        <!-- excel dependenices -->
+
+        <!-- Excel: Fillo + POI -->
         <dependency>
             <groupId>com.codoid.products</groupId>
             <artifactId>fillo</artifactId>
@@ -71,47 +78,32 @@
             <version>3.17</version>
         </dependency>
 
-        <dependency>
-            <groupId>common-io</groupId>
-            <artifactId>common-io</artifactId>
-            <version>2.6</version>
-        </dependency>
-
-        <!-- file utils dependenices -->
+        <!-- File utils -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.16.1</version>
         </dependency>
-        <!-- SQL server dependenices -->
+
+        <!-- SQL Server -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
             <version>${mssql-jdbc.version}</version>
         </dependency>
+
+        <!-- MySQL -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
-        <!-- logging dependenices -->
+
+        <!-- Logging -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.20.0</version>
-        </dependency>
-        <!-- log4j dependenices -->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.12</version>
-        </dependency>
-        <!-- lombok  dependenices -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -119,15 +111,18 @@
             <version>2.0.12</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Lombok -->
         <dependency>
-            <groupId>com.aventstack</groupId>
-            <artifactId>extentreports</artifactId>
-            <version>5.0.9</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>provided</scope>
         </dependency>
 
-        <!-- winium driver for desktop app automtion dependenices -->
+        <!-- Winium (desktop automation) -->
         <dependency>
-            <groupId>com.github.winium</groupId>
+            <groupId>com.github.2gis.winium</groupId>
             <artifactId>winium-webdriver</artifactId>
             <version>0.1.0-1</version>
         </dependency>
@@ -151,21 +146,17 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>17</source>
+                    <target>17</target>
                     <annotationProcessorPaths>
-                        <groupId>org.projectlombok</groupId>
-                        <artifactId>lombok</artifactId>
-                        <version>1.18.24</version>
-                        <path>provided</path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.24</version>
+                        </path>
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 </project>
-
-
-
-

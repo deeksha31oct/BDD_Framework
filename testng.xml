@@ -1,0 +1,81 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="BDD_Framework_Suite" thread-count="1" parallel="false">
+    
+    <!-- Listeners for reporting and test event handling -->
+    <listeners>
+        <!-- Custom ExtentReport Listener -->
+        <listener class-name="utilites.ExtentTestListener"/>
+    </listeners>
+
+    <!-- Main Test Suite - Contains all main tests -->
+    <test name="BDD_Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="baseURL" value="https://www.example.com"/>
+        <classes>
+            <!-- Add your test classes here -->
+           <classes>
+
+           </classes>
+
+
+    </test>
+
+    <!Base.My,.BaseTeststs Suite - Quick sanity checks -->
+    <test name="Smoke_Tests" enabled="false">
+        <parameter name="browser" value="chrome"/>
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <packages>
+            <!-- <package name="com.example.tests"/>-->
+        </packages>
+    </test>
+
+    <!-- Regression Tests Suite - Full test coverage -->
+    <test name="Regression_Tests" enabled="false">
+        <parameter name="browser" value="chrome"/>
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <packages>
+            <!-- <package name="com.example.tests"/>-->
+        </packages>
+    </test>
+
+    <!-- Sanity Tests Suite - Basic functionality checks -->
+    <test name="Sanity_Tests" enabled="false">
+        <parameter name="browser" value="chrome"/>
+        <groups>
+            <run>
+                <include name="sanity"/>
+            </run>
+        </groups>
+        <packages>
+            <!-- <package name="com.example.tests"/>-->
+        </packages>
+    </test>
+
+    <!-- API Tests Suite - API endpoint testing -->
+    <test name="API_Tests" enabled="false">
+        <groups>
+            <run>
+                <include name="api"/>
+            </run>
+        </groups>
+        <packages>
+            <!-- <package name="com.example.tests.api"/>-->
+        </packages>
+    </test>
+
+    <!-- Cross-Browser Tests Suite - Testing across multiple browsers -->
+    <test name="CrossBrowser_Tests" enabled="false">
+        <packages>
+            <!-- <package name="com.example.tests.crossbrowser"/>-->
+        </packages>
+    </test>
+
+</suite>
