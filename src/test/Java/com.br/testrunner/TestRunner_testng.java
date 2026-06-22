@@ -37,6 +37,7 @@ public class TestRunner_testng {
     @DataProvider
     public Object[][] scenarios() {
         if (testNGCucumberRunner == null) {
+
             return new Object[0][0];
         }
         return testNGCucumberRunner.provideScenarios();
