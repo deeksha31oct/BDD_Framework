@@ -1,8 +1,8 @@
 @UI_Navigation_OrangeHRM
 Feature: OrangeHRM Navigation
 
-  @T_1 @NavigationE2ESUITE @TCid_001
-  Scenario Outline:Tc_1 :: :: Navigate to PIM module
+  @T_1 @NavigationE2ESUITE @TCid_0011
+  Scenario Outline:TC_11 :: :: Navigate to PIM module
     Given Browser Selection is "Chrome"
     And read data '<sheet>' from sheet
     Given user is logged into OrangeHRM

@@ -2,7 +2,7 @@
 Feature: OrangeHRM Login
 
 @T_1 @LoginE2ESUITE @TCid_001
-  Scenario Outline: Successful login with valid credentials
+  Scenario Outline: TC_001 :: ::Successful login with valid credentials
     Given Browser Selection is "Chrome"
      And read data '<sheet>' from sheet
     Given user is on the OrangeHRM login page
@@ -14,7 +14,7 @@ Feature: OrangeHRM Login
     |valid_login| Successful login with valid credentials    |your request has been submitted  |
 
   @T_2 @LoginE2ESUITE @TCid_002
-  Scenario Outline: Login fails with invalid credentials
+  Scenario Outline: TC_002 :: ::Login fails with invalid credentials
     Given Browser Selection is "Chrome"
     And read data '<sheet>' from sheet
     Given user is on the OrangeHRM login page

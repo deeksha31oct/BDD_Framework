@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
         plugin = {"pretty", "html:target/cucumber-reports/report.html", "json:target/cucumber-reports/report.json"},
         monochrome = true,
         dryRun = false,
-        tags = "@smoke"
+        tags = ("@TCid_001")
 )
 public class TestRunner_testng {
 

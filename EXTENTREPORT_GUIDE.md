@@ -84,28 +84,28 @@ package Base;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utilites.ExtentReportManager;
-import utilites.ScreenshotUtility;
+import Com.base.testng.ExtentReportManager;
+import Com.base.Extradata.ScreenshotUtility;
 
 public class YourTestClass extends BaseTest {
-    
+
     @Test(description = "Test description here")
     public void testYourScenario() {
         try {
             // Step 1
             ExtentReportManager.logInfo("Step 1: Your step description");
             // Your test code
-            
+
             // Step 2
             ExtentReportManager.logInfo("Step 2: Another step");
             // More test code
             Assert.assertTrue(condition, "Assertion message");
             ExtentReportManager.logPass("Step passed successfully");
-            
+
             // Capture screenshot
             ScreenshotUtility.captureScreenshot(driver, "StepName");
             ExtentReportManager.attachScreenshot(driver, "StepName");
-            
+
         } catch (Exception e) {
             ExtentReportManager.logFail("Test failed: " + e.getMessage());
             ExtentReportManager.logException(e);

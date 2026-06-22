@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+        <!-- report theme: standard or dark -->
+        <theme>dark</theme>
+
+        <!-- document encoding -->
+        <encoding>UTF-8</encoding>
+
+        <!-- protocol for loading external resources -->
+        <protocol>https</protocol>
+
+        <!-- browser tab title -->
+        <documentTitle>Automation Test Report</documentTitle>
+
+        <!-- name shown at the top of the report -->
+        <reportName>BDD Framework - Execution Report</reportName>
+
+        <!-- timestamp format for events -->
+        <timeStampFormat>MMM dd, yyyy HH:mm:ss</timeStampFormat>
+
+        <!-- enable timeline view -->
+        <enableTimeline>true</enableTimeline>
+    </configuration>
+</extentreports>
