@@ -10,14 +10,14 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @CucumberOptions(
-        features = "FeatureFiles",                          // path to .feature files
-        glue = {"com.br.stepdefinations"},                  // step definitions + hooks package
-        plugin = {"pretty", "html:target/cucumber-reports/report.html", "json:target/cucumber-reports/report.json"},
-        monochrome = true,
-        dryRun = false,
-        tags = ("@AP_1")
-)
-public class TestRunner_testng {
+                features = "FeatureFiles",                          // covers all feature subfolders
+                glue = {"com.br.stepdefinations", "API_Logic.API_StepDefinations"},  // BOTH glue packages
+                                           // matches your feature tag
+                plugin = {"pretty", "json:target/cucumber.json"},
+                tags = "@AP_01"
+        )
+
+public class TestRunner_api_testng {
 
     private TestNGCucumberRunner testNGCucumberRunner;
 

@@ -1,0 +1,11 @@
+{
+  "create_vendor": {
+    "vendorName": "Acme Steel",
+    "gstNumber": "29ABCDE1234F1Z5",
+    "city": "Hyderabad"
+  },
+  "update_vendor": {
+    "vendorName": "Acme Steel Updated",
+    "city": "Bangalore"
+  }
+}

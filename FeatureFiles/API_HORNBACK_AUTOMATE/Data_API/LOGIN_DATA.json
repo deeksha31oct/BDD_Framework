@@ -1,0 +1,18 @@
+{
+  "valid_login": {
+    "username": "admin",
+    "password": "secret"
+  },
+  "invalid_login": {
+    "username": "admin",
+    "password": "wrongpass"
+  },
+  "notprovided_login": {
+    "username": "",
+    "password": "wrongpass"
+  },
+  "notprovided_password_login": {
+    "username": "admin",
+    "password": ""
+  }
+}
