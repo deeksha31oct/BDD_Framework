@@ -5,6 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.bouncycastle.pqc.crypto.util.PQCOtherInfoGenerator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -35,6 +36,11 @@ public class FactoryExpensesNavigationSteps {
         WebDriverWait wait = new WebDriverWait(hooks.driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//*[normalize-space()='" + menuName + "']"))).click();
+    }
+    @Given(" Given  user is logged in to hormback IMS application and nevigate to the dashboard")
+    public void user_logged_in_and_navigated_to_dashboard() {
+
+        // Implementation for logging in and navigating to dashboard
     }
 
     @Then("the Factory Expenses page should be displayed")
