@@ -23,6 +23,7 @@ public class Framework_globalvariable {
     public static int implicitWait;
     public static int explicitWait;
     public static int pageLoadTimeout;
+            public static String TC_ID;
 
     // ---------- Cucumber Variables ----------
     public static String featuresPath;

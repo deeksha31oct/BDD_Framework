@@ -1,19 +1,18 @@
 package Com.base.ExcelFuntions;
 
+import Com.base.FunctionLibarary.ExcelUtility;
 import com.codoid.products.exception.FilloException;
 import com.codoid.products.fillo.Connection;
 import com.codoid.products.fillo.Fillo;
 import com.codoid.products.fillo.Recordset;
-import com.codoid.products.exception.FilloException;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.logging.Logger;
 
-    public class ExcelMangerFillo {
+public class ExcelMangerFillo {
 
         private final String filePath;
+        public static Logger log = Logger.getLogger(ExcelMangerFillo.class.getName());
 
         public ExcelMangerFillo(String filePath) {
             this.filePath = filePath;
@@ -82,26 +81,35 @@ import java.util.Map;
         }
 
         // 4. getDataIntoDictionary - read ONE matching row into a Map<columnName, value>
-        public Map<String, String> getDataIntoDictionary(String sheetName, String whereColumn, String whereValue) {
-            Map<String, String> rowMap = new LinkedHashMap<>();
+        public Map<String, String> getDataIntoDictionary(String sheetName, String query, String admin) {
+            Dictionary<Integer , HashMap<String, String>> totalSpreadsheet = new Hashtable<>();
+            ArrayList<String>fieldName = new ArrayList<>();
             Connection conn = null;
             Recordset rs = null;
             try {
-                conn = getConnection();
-                String query = "SELECT * FROM " + sheetName + " WHERE " + whereColumn + "='" + whereValue + "'";
-                rs = conn.executeQuery(query);
-                if (rs.next()) {
-                    for (String col : rs.getFieldNames()) {
-                        rowMap.put(col, rs.getField(col));
+                conn = ExcelUtility.getConnection(filePath);
+                log.info("Executing query: " + query);
+                log.info("fillo connection estibish :" + filePath + " ");
+                int coloumncount = getColumnCount(sheetName);
+                fieldName= rs.getFieldNames();
+                int rownumber = 0;
+                while (rs.next()) {
+                    HashMap<String, String> rowMap = new HashMap<>();
+                    for(int colcount =0 ;colcount<coloumncount;colcount++)
+                    {
+                        rowMap.put(fieldName.get(colcount), rs.getField(fieldName.get(colcount)));
                     }
+                    totalSpreadsheet.put(rownumber, rowMap);
+                    rownumber++;
                 }
+                log.info("data is captured from " + sheetName);
             } catch (FilloException e) {
-                e.printStackTrace();
+                assert false : "Error occurred while fetching data from sheet: " + sheetName;
             } finally {
                 if (rs != null) rs.close();
                 if (conn != null) conn.close();
             }
-            return rowMap;
+            return (Map<String, String>) totalSpreadsheet;
         }
 
         // 5. getDataIntoDictionaryWithColumnNumber - read ONE matching row into Map<columnIndex, value>
@@ -230,4 +238,12 @@ import java.util.Map;
             System.out.println("Sheet without Password: " + excel.readSpreadSheetWithExcludingColumn("Login", "Password"));
             excel.updateExcelField("Login", "Password", "newPass123", "Username", "admin");
         }
-    }
+
+        public Dictionary<Integer , HashMap<String, String>> readSpreadSheet(String completeExcelPath, String sheetName, String query) {
+            ExcelMangerFillo ExcelMangerFillo = new ExcelMangerFillo(completeExcelPath);
+               Dictionary<Integer, HashMap<String, String>> totalSpreadsheet = (Dictionary<Integer, HashMap<String, String>>) getDataIntoDictionary(sheetName,query, "admin");
+               return  totalSpreadsheet ;
+
+        }
+}
+

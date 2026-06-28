@@ -1,5 +1,6 @@
 package com.br.testglobalvariable;
 
+import Com.base.globalvariable.Framework_globalvariable;
 import com.codoid.products.exception.FilloException;
 import com.codoid.products.fillo.Connection;
 import com.codoid.products.fillo.Fillo;
@@ -28,7 +29,7 @@ public class Text_GlobalVariable {
     // ---- Excel data holder: each row -> Map<columnName, value> ----
     public static List<Map<String, String>> completedTestData = new ArrayList<>();
     private static String excelPath;
-
+public  static String global_fs = Framework_globalvariable.FILE_SEPARATOR;
     // STEP 1: set path
     public static void setExcelPath(String path) {
         excelPath = path;

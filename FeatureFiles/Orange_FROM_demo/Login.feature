@@ -1,10 +1,11 @@
-@UI_login_OrangeHRM
+@UI_login_OrangeHRMD
 Feature: OrangeHRM Login
 
 @T_1 @LoginE2ESUITE @TCid_001
   Scenario Outline: TC_001 :: ::Successful login with valid credentials
     Given Browser Selection is "Chrome"
-     And read data '<sheet>' from sheet
+     #And read data '<sheet>' from sheet
+     And  Read all the data from '<sheet>' in "logi_page.xlsx"
     Given user is on the OrangeHRM login page
     When user enters username "Admin" and password "admin123"
     And user clicks the login button
@@ -16,7 +17,7 @@ Feature: OrangeHRM Login
   @T_2 @LoginE2ESUITE @TCid_002
   Scenario Outline: TC_002 :: ::Login fails with invalid credentials
     Given Browser Selection is "Chrome"
-    And read data '<sheet>' from sheet
+    And Read all the data from '<sheet>' in "logi_page.xlsx"
     Given user is on the OrangeHRM login page
     When user enters username "Admin" and password "wrongpass"
     And user clicks the login button

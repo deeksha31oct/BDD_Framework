@@ -1,5 +1,7 @@
 package com.br.stepdefinations;
 
+import Com.base.ExcelFuntions.ExcelMangerFillo;
+import Com.base.globalvariable.Framework_globalvariable;
 import com.br.busniesslibarary.browserIntialtes;
 import com.br.testglobalvariable.GlobalVariables;
 import com.br.testglobalvariable.Text_GlobalVariable;
@@ -26,9 +28,12 @@ public class commonsteps {
 
     // 1. capture ONE scenario's complete test data (row 0) into globals
     @Given("capture complete scenario test data from sheet {string}")
-    public void captureCompleteScenarioTestData(String sheetName) {
-        Text_GlobalVariable.readExcelData(sheetName);
-        GlobalVariables.loadGlobalVariables();              // assigns row 0 to globals
+    public void captureCompleteScenarioTestData(String sheetName, String excel) {
+        String completeExcelPath = Text_GlobalVariable.completedTestData + Text_GlobalVariable.global_fs+ excel;
+        ExcelMangerFillo fillo = new ExcelMangerFillo(completeExcelPath);
+        String query = "Select * from "+ sheetName + "where TC_id"+ Framework_globalvariable.TC_ID+ "";
+        Text_GlobalVariable.completedTestData= (List<Map<String, String>>) fillo.readSpreadSheet(completeExcelPath,sheetName,query);
+                     // assigns row 0 to globals
         System.out.println("Captured scenario test data from: " + sheetName);
     }
 
@@ -49,6 +54,14 @@ public class commonsteps {
         } else {
             System.out.println("No data found - read the sheet first");
         }
+    }
+    @Given("^Read all the data from '(.+)' in \"([^\"]*)\"$")
+    public void read_All_the_Data_From_(String sheetName,String excel) throws Throwable {
+        Text_GlobalVariable.completedTestData= null;
+        captureCompleteScenarioTestData(sheetName,excel);
+        GlobalVariables.loadGlobalVariables();
+
+       // updateGV.Framework_globalvariables();
     }
 
     // 4. navigate to the search screen
