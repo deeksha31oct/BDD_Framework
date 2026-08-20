@@ -9,7 +9,7 @@ import java.time.Duration;
 
 public class Hornback_Login {
 
-    private final WebDriver driver;
+    private WebDriver driver = null;
     private final WebDriverWait wait;
 
     public Hornback_Login() {
